@@ -5,6 +5,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 const typewriterText = document.getElementById("typewriter-text");
 const inPageLinks = document.querySelectorAll('a[href^="#"]');
+const customCursor = document.querySelector(".custom-cursor");
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
@@ -65,8 +66,47 @@ inPageLinks.forEach((link) => {
   });
 });
 
+const revealElements = [
+  ...document.querySelectorAll(
+    ".glass-card:not(.project-card):not(.fyp-feature-card), .section h2, .section-heading-accent, .skill-icon-card, .project-card, .fyp-feature-card"
+  ),
+];
+
+const cardElements = [
+  ...document.querySelectorAll(
+    ".glass-card:not(.project-card):not(.fyp-feature-card):not(.hero-status-card)"
+  ),
+];
+const headingElements = [...document.querySelectorAll(".section h2, .section-heading-accent")];
+const skillCards = [...document.querySelectorAll(".skill-icon-card")];
+const projectCards = [...document.querySelectorAll(".project-card")];
+const fypFeatureCard = document.querySelector(".fyp-feature-card");
+
+cardElements.forEach((card, index) => {
+  card.classList.add("reveal-item", "reveal-card");
+  card.style.transitionDelay = `${index * 0.1}s`;
+});
+
+headingElements.forEach((heading) => {
+  heading.classList.add("reveal-item", "reveal-heading");
+});
+
+skillCards.forEach((card, index) => {
+  card.classList.add("reveal-item");
+  card.style.transitionDelay = `${index * 0.1}s`;
+});
+
+projectCards.forEach((card, index) => {
+  card.classList.add("reveal-item", index % 2 === 0 ? "reveal-left" : "reveal-right");
+  card.style.transitionDelay = `${index * 0.1}s`;
+});
+
+if (fypFeatureCard) {
+  fypFeatureCard.classList.add("reveal-item", "reveal-fyp");
+}
+
 if (!prefersReducedMotion) {
-  const sectionObserver = new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -78,13 +118,12 @@ if (!prefersReducedMotion) {
     { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
   );
 
-  sections.forEach((section) => {
-    section.classList.add("fade-in-section");
-    sectionObserver.observe(section);
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
   });
 } else {
-  sections.forEach((section) => {
-    section.classList.add("fade-in-section", "is-visible");
+  revealElements.forEach((element) => {
+    element.classList.add("is-visible");
   });
 }
 
@@ -127,4 +166,19 @@ if (typewriterText) {
   };
 
   tick();
+}
+
+if (customCursor && !prefersReducedMotion) {
+  window.addEventListener("mousemove", (event) => {
+    customCursor.style.left = `${event.clientX}px`;
+    customCursor.style.top = `${event.clientY}px`;
+  });
+
+  document.addEventListener("mouseleave", () => {
+    customCursor.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    customCursor.style.opacity = "1";
+  });
 }
