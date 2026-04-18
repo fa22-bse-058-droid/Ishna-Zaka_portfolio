@@ -24,8 +24,8 @@ body {
   color: var(--text-primary);
   background: radial-gradient(
       ellipse at top left,
-      rgba(232, 117, 74, 0.35) 0%,
-      rgba(200, 80, 60, 0.2) 25%,
+      rgba(232, 117, 74, 0.16) 0%,
+      rgba(200, 80, 60, 0.08) 25%,
       transparent 60%
     ),
     radial-gradient(
@@ -54,7 +54,7 @@ body::after {
   top: -170px;
   border-radius: 50%;
   background: #e8754a;
-  opacity: 0.28;
+  opacity: 0.15;
   filter: blur(140px);
   pointer-events: none;
   z-index: -1;
@@ -191,6 +191,13 @@ body::after {
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: radial-gradient(
+      ellipse at 82% 15%,
+      rgba(232, 117, 74, 0.08) 0%,
+      rgba(232, 117, 74, 0.03) 35%,
+      transparent 65%
+    ),
+    #f5f0eb;
 }
 
 .hero::before {
@@ -241,7 +248,7 @@ body::after {
   height: 600px;
   right: -110px;
   top: -80px;
-  background: rgba(232, 117, 74, 0.25);
+  background: rgba(232, 117, 74, 0.15);
   filter: blur(120px);
   animation: blobPulse 8s ease-in-out infinite alternate;
 }
@@ -853,6 +860,18 @@ h2 {
 .fyp-pill {
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(232, 117, 74, 0.08);
+  border: 1px solid rgba(232, 117, 74, 0.25);
+  color: #e8754a;
+}
+
+.fyp-pill svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
 }
 
 .section-intro {
@@ -972,8 +991,25 @@ h2 {
 
 .fyp-contributions ul {
   margin: 0 0 1rem;
-  padding-left: 1.05rem;
+  padding: 0;
+  list-style: none;
   color: var(--text-secondary);
+}
+
+.fyp-contributions li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.fyp-contributions li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-top: 0.58em;
+  border-radius: 1px;
+  background: #e8754a;
+  flex: 0 0 4px;
 }
 
 .fyp-contributions li + li {
