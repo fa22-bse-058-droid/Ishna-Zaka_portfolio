@@ -114,6 +114,17 @@ body {
   position: relative;
 }
 
+.section.fade-in-section {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .section:nth-child(2n + 1):not(.hero) {
   background: var(--bg-secondary);
 }
@@ -598,9 +609,84 @@ h2 {
 }
 
 .site-footer {
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 1.4rem 0 1.2rem;
+}
+
+.footer-content {
   text-align: center;
+}
+
+.footer-name {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.footer-nav-list {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.footer-nav-list a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.83rem;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-list a:hover,
+.footer-nav-list a:focus-visible {
+  color: #f4a26b;
+}
+
+.contact {
+  text-align: center;
+}
+
+.contact-intro {
+  max-width: 760px;
+  margin: 0 auto 1.35rem;
+}
+
+.contact-intro p {
+  margin: 0;
   color: var(--text-secondary);
-  padding: 1.2rem;
+}
+
+.contact-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.2rem 1.5rem;
+}
+
+.contact-email-label {
+  margin: 0;
+  color: #6b6560;
+  font-size: 0.84rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.contact-email {
+  margin: 0.35rem 0 1.2rem;
+  font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+  font-weight: 600;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
 }
 
 @media (max-width: 900px) {
@@ -690,9 +776,19 @@ h2 {
   .skills-grid {
     grid-template-columns: 1fr;
   }
+
+  .contact-card {
+    padding: 1.65rem 1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .section.fade-in-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
