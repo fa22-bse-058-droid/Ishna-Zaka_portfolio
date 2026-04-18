@@ -1116,23 +1116,37 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footer-meta a {
   color: #a0998f;
   text-decoration: none;
   transition: color 0.2s ease;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .footer-meta a:hover {
   color: #e8754a;
 }
 
+.footer-linkedin {
+  display: inline-flex;
+  align-items: center;
+}
+
 .footer-linkedin svg {
   width: 18px;
   height: 18px;
   fill: currentColor;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
 }
 
 .footer-nav-list {
