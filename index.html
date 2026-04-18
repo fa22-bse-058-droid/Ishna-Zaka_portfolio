@@ -13,6 +13,18 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <svg class="svg-filters" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="hero-noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.92"
+            numOctaves="2"
+            stitchTiles="stitch"
+          />
+        </filter>
+      </defs>
+    </svg>
     <header class="site-header">
       <div class="container nav-wrap">
         <a href="#home" class="logo">Ishna.</a>
@@ -91,13 +103,10 @@
                 <span class="terminal-dot terminal-dot-green"></span>
               </div>
               <div class="terminal-lines">
-                <p>&gt; Available for opportunities ✦</p>
+                <p>&gt; Open for Job ✦</p>
                 <p>&gt; Building: AI Career Platform</p>
-                <p>&gt; Stack: FastAPI + React + AI</p>
                 <p>
-                  &gt; Location: Sahiwal, Pakistan<span class="terminal-cursor"
-                    >_</span
-                  >
+                  &gt; Location: Pakistan<span class="terminal-cursor">_</span>
                 </p>
               </div>
             </div>
@@ -122,12 +131,12 @@
             </div>
             <aside class="glass-card about-info-card" aria-label="About details">
               <ul>
-                <li>🎓 Degree: BSE Software Engineering</li>
-                <li>📅 Batch: 2022–2026</li>
-                <li>🏫 COMSATS University Islamabad, Sahiwal Campus</li>
-                <li>💼 Open to: Internships &amp; Junior Roles</li>
+                <li>Degree: BSE Software Engineering</li>
+                <li>Batch: 2022–2026</li>
+                <li>COMSATS University Islamabad, Sahiwal Campus</li>
+                <li>Open to: Internships &amp; Junior Roles</li>
                 <li>
-                  🔗 GitHub:
+                  GitHub:
                   <a
                     href="https://github.com/fa22-bse-058-droid"
                     target="_blank"
@@ -532,6 +541,9 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+        <p class="footer-copyright">
+          © <span id="year"></span> Ishna Zaka. All rights reserved.
+        </p>
       </div>
     </footer>
 
