@@ -488,6 +488,11 @@ h2 {
   color: #3c3834;
   font-weight: 600;
   transition: color 0.2s ease;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  text-align: left;
 }
 
 .project-link span {
@@ -496,6 +501,15 @@ h2 {
 
 .project-link:hover {
   color: var(--accent);
+}
+
+.project-link-disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.project-link-disabled:hover {
+  color: #3c3834;
 }
 
 .fyp-feature-card {
