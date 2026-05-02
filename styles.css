@@ -1054,8 +1054,16 @@ skill-icon-box svg rect {
   background: var(--bg-secondary);
 }
 
+.contact > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .contact-intro {
   margin-bottom: 2.5rem;
+  width: 100%;
 }
 
 .contact-intro h2 {
@@ -1065,7 +1073,7 @@ skill-icon-box svg rect {
 .contact-intro p {
   color: var(--text-secondary);
   max-width: 70ch;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .contact-card {
@@ -1073,6 +1081,8 @@ skill-icon-box svg rect {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
+  align-items: center;
+  max-width: 600px;
 }
 
 .contact-email-label {
@@ -1114,6 +1124,7 @@ skill-icon-box svg rect {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -1269,10 +1280,6 @@ skill-icon-box svg rect {
 
   .contact-card {
     padding: 2rem;
-  }
-
-  .contact-actions {
-    justify-content: flex-start;
   }
 }
 
