@@ -1,5 +1,5 @@
 // Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // ============================================
 // INITIALIZATION
@@ -458,14 +458,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         const element = document.querySelector(href);
         if (element) {
-            gsap.to(window, {
-                duration: 0.6,
-                scrollTo: {
-                    y: element.offsetTop - 80,
-                    autoKill: false,
-                },
-                ease: 'power3.inOut',
-            });
+            // Use simple smooth scroll if ScrollToPlugin is not available
+            if (typeof gsap !== 'undefined' && gsap.to && ScrollToPlugin) {
+                gsap.to(window, {
+                    duration: 0.8,
+                    scrollTo: {
+                        y: element.offsetTop - 80,
+                        autoKill: false,
+                    },
+                    ease: 'power3.inOut',
+                });
+            } else {
+                // Fallback to native smooth scroll
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     });
 });
@@ -524,6 +530,17 @@ document.querySelectorAll('.scroll-trigger, .fade-in').forEach(el => {
 window.addEventListener('load', () => {
     // Add subtle fade-in to page
     document.body.style.opacity = '1';
+    // Refresh ScrollTrigger on load
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+    }
+});
+
+// Refresh ScrollTrigger on window resize
+window.addEventListener('resize', () => {
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+    }
 });
 
 // Make sure body starts with proper opacity

@@ -224,9 +224,33 @@ p { font-size: 1rem; line-height: 1.7; }
         top: 70px;
         left: 0;
         right: 0;
-        background: rgba(22, 33, 39, 0.98);
+        background: rgba(22, 33, 39, 0.99);
+        backdrop-filter: blur(10px);
         padding: 20px;
-        gap: 20px;
+        gap: 0;
+        border-bottom: 1px solid rgba(207, 157, 123, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar-menu.active .nav-link {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(207, 157, 123, 0.1);
+    }
+    
+    .navbar-menu.active .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
     }
 }
 
@@ -331,6 +355,7 @@ p { font-size: 1rem; line-height: 1.7; }
     width: 100%;
     height: 100%;
     z-index: 1;
+    pointer-events: none;
 }
 
 @media (max-width: 768px) {
@@ -1023,6 +1048,10 @@ p { font-size: 1rem; line-height: 1.7; }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --section-padding: 50px 0;
+    }
+    
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.5rem; }
     
@@ -1034,8 +1063,58 @@ p { font-size: 1rem; line-height: 1.7; }
         font-size: 2rem;
     }
     
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .skill-card {
+        padding: 20px 15px;
+    }
+    
+    .terminal-window {
+        margin-top: 30px;
+    }
+    
+    .terminal-body {
+        font-size: 0.8rem;
+        padding: 20px;
+        min-height: 300px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 0;
+    }
+    
+    .timeline-item.left,
+    .timeline-item.right {
+        padding-left: 30px;
+        padding-right: 0;
+    }
+    
+    .timeline-dot {
+        left: -13px;
+    }
+    
+    .timeline-card {
+        max-width: 100%;
+    }
+    
+    .fyp-features {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .feature-card {
+        padding: 15px;
     }
 }
 
