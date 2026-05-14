@@ -2,6 +2,18 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // ============================================
+// HELPER FUNCTIONS
+// ============================================
+
+/**
+ * Check if ScrollTrigger is available
+ * @returns {boolean} True if ScrollTrigger is defined
+ */
+function isScrollTriggerAvailable() {
+    return typeof ScrollTrigger !== 'undefined';
+}
+
+// ============================================
 // INITIALIZATION
 // ============================================
 
@@ -309,7 +321,11 @@ function initializeTerminalTyping() {
     const terminalOutput = document.getElementById('terminal-output');
     if (!terminalOutput) return;
     
-    // ScrollTrigger that will only fire once
+    // ScrollTrigger that will only fire once when scrolling into view.
+    // The 'once: true' option ensures the animation only runs a single time,
+    // preventing the terminal content from being regenerated on subsequent scrolls.
+    if (!isScrollTriggerAvailable()) return;
+    
     ScrollTrigger.create({
         trigger: '.code-showcase',
         start: 'top 75%',
@@ -452,14 +468,14 @@ window.addEventListener('load', () => {
     // Add subtle fade-in to page
     document.body.style.opacity = '1';
     // Refresh ScrollTrigger on load
-    if (typeof ScrollTrigger !== 'undefined') {
+    if (isScrollTriggerAvailable()) {
         ScrollTrigger.refresh();
     }
 });
 
 // Refresh ScrollTrigger on window resize
 window.addEventListener('resize', () => {
-    if (typeof ScrollTrigger !== 'undefined') {
+    if (isScrollTriggerAvailable()) {
         ScrollTrigger.refresh();
     }
 });
