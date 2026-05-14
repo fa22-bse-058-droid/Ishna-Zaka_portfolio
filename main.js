@@ -309,87 +309,18 @@ function initializeTerminalTyping() {
     const terminalOutput = document.getElementById('terminal-output');
     if (!terminalOutput) return;
     
-    const lines = [
-        '> whoami',
-        'ishna · Software Engineer · COMSATS Sahiwal',
-        '',
-        '> cat skills.json',
-        '{',
-        '  "backend": ["Python", "Django", "FastAPI"],',
-        '  "frontend": ["React", "JavaScript", "HTML/CSS"],',
-        '  "ai_ml": ["spaCy", "Transformers", "NLP"],',
-        '  "cloud": ["AWS", "Docker"]',
-        '}',
-        '',
-        '> git log --oneline -4',
-        'a1f3c9 feat: CV analyzer with ATS scoring 0-100',
-        'b2e7d1 feat: job scraper for 7 platforms',
-        'c3a8f2 feat: AI chatbot with career mentorship',
-        'd4b9e3 feat: gamified community forum',
-    ];
-    
-    // Wait for section to be in view before starting typing
+    // ScrollTrigger that will only fire once
     ScrollTrigger.create({
         trigger: '.code-showcase',
-        start: 'top 80%',
+        start: 'top 75%',
         onEnter: () => {
-            typeLines(lines, terminalOutput);
-            ScrollTrigger.getAll().forEach(trigger => {
-                if (trigger.vars.trigger === '.code-showcase') {
-                    trigger.kill();
-                }
-            });
+            typeTerminal(terminalOutput);
         },
+        once: true,
     });
 }
 
-function typeLines(lines, container) {
-    let lineIndex = 0;
-    let charIndex = 0;
-    
-    function typeLine() {
-        if (lineIndex >= lines.length) return;
-        
-        const line = lines[lineIndex];
-        
-        if (charIndex < line.length) {
-            const span = document.createElement('span');
-            span.textContent = line[charIndex];
-            
-            // Color keywords
-            if (line.includes('{') || line.includes('}') || line.includes('[') || line.includes(']') || line.includes(',') || line.includes(':')) {
-                if (line[charIndex] === '{' || line[charIndex] === '}' || line[charIndex] === '[' || line[charIndex] === ']') {
-                    span.style.color = '#CF9D7B';
-                }
-            }
-            
-            container.appendChild(span);
-            charIndex++;
-            
-            setTimeout(typeLine, 30);
-        } else {
-            // Finished typing this line
-            const lineDiv = document.createElement('div');
-            lineDiv.innerHTML = container.innerHTML;
-            container.innerHTML = '';
-            container.appendChild(lineDiv);
-            container.innerHTML += '\n';
-            
-            lineIndex++;
-            charIndex = 0;
-            
-            setTimeout(typeLine, 100);
-        }
-    }
-    
-    typeLine();
-}
-
-// Improved terminal typing (simpler version)
-function typeTerminal() {
-    const terminalOutput = document.getElementById('terminal-output');
-    if (!terminalOutput) return;
-    
+function typeTerminal(terminalOutput) {
     const content = `<span class="prompt">&gt;</span> whoami
 ishna · Software Engineer · COMSATS Sahiwal
 
@@ -409,16 +340,6 @@ d4b9e3 feat: gamified community forum`;
     
     terminalOutput.innerHTML = content;
 }
-
-// Call typeTerminal on scroll
-ScrollTrigger.create({
-    trigger: '.code-showcase',
-    start: 'top 75%',
-    onEnter: () => {
-        typeTerminal();
-    },
-    once: true,
-});
 
 // ============================================
 // MOBILE MENU
@@ -458,8 +379,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         const element = document.querySelector(href);
         if (element) {
-            // Use simple smooth scroll if ScrollToPlugin is not available
-            if (typeof gsap !== 'undefined' && gsap.to && ScrollToPlugin) {
+            // Use GSAP smooth scroll with fallback
+            try {
                 gsap.to(window, {
                     duration: 0.8,
                     scrollTo: {
@@ -468,8 +389,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     },
                     ease: 'power3.inOut',
                 });
-            } else {
-                // Fallback to native smooth scroll
+            } catch (err) {
+                // Fallback to native smooth scroll if GSAP fails
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
@@ -542,6 +463,3 @@ window.addEventListener('resize', () => {
         ScrollTrigger.refresh();
     }
 });
-
-// Make sure body starts with proper opacity
-document.body.style.opacity = '1';

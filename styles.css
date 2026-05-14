@@ -13,6 +13,10 @@
     
     --section-padding: 80px 0;
     --transition: all 0.3s ease;
+    --hamburger-rotate-1: 45deg;
+    --hamburger-translate-1: 10px;
+    --hamburger-rotate-3: -45deg;
+    --hamburger-translate-3: 7px;
 }
 
 /* ============================================
@@ -242,7 +246,7 @@ p { font-size: 1rem; line-height: 1.7; }
     }
     
     .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(10px, 10px);
+        transform: rotate(var(--hamburger-rotate-1)) translate(var(--hamburger-translate-1), var(--hamburger-translate-1));
     }
     
     .hamburger.active span:nth-child(2) {
@@ -250,7 +254,7 @@ p { font-size: 1rem; line-height: 1.7; }
     }
     
     .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
+        transform: rotate(var(--hamburger-rotate-3)) translate(var(--hamburger-translate-3), calc(var(--hamburger-translate-3) * -1));
     }
 }
 
