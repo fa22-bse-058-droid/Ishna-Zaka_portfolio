@@ -1,586 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ishna | Software Engineering Student</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <svg class="svg-filters" aria-hidden="true" focusable="false">
-      <defs>
-        <filter id="hero-noise">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.92"
-            numOctaves="2"
-            stitchTiles="stitch"
-          />
-        </filter>
-      </defs>
-    </svg>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#home" class="logo">Ishna Zaka</a>
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Toggle navigation menu"
-          aria-expanded="false"
-          aria-controls="primary-nav"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav id="primary-nav" class="site-nav">
-          <ul class="nav-list">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#fyp">FYP</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section id="home" class="section hero">
-        <div class="hero-mesh" aria-hidden="true"></div>
-        <div class="hero-blob hero-blob-large"></div>
-        <div class="hero-blob hero-blob-small"></div>
-        <div class="hero-orb orb-1" aria-hidden="true"></div>
-        <div class="hero-orb orb-2" aria-hidden="true"></div>
-        <div class="hero-orb orb-3" aria-hidden="true"></div>
-        <div class="hero-orb orb-4" aria-hidden="true"></div>
-        <div class="hero-prism" aria-hidden="true">
-          <span class="prism-face prism-front"></span>
-          <span class="prism-face prism-back"></span>
-          <span class="prism-face prism-right"></span>
-          <span class="prism-face prism-left"></span>
-          <span class="prism-face prism-top"></span>
-          <span class="prism-face prism-bottom"></span>
-        </div>
-        <div class="container hero-layout">
-          <div class="hero-content">
-            <p class="hero-tag">BSE Software Engineering 2022–2026</p>
-            <h1>Hi, I'm Ishna</h1>
-            <p class="hero-subtitle">
-              <span id="typewriter-text"></span><span class="cursor">|</span>
-            </p>
-            <p class="hero-bio">
-              I build scalable AI-powered web applications with clean, animated
-              frontends and intelligent backends. I build systems that solve real
-              world problems.
-            </p>
-            <div class="hero-actions">
-              <a href="#projects" class="btn btn-primary">View My Work</a>
-              <a
-                href="https://github.com/fa22-bse-058-droid"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-                >GitHub</a
-              >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishna Zaka - AI/Python Developer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Devicons for skill icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" crossorigin="anonymous">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" crossorigin="anonymous" defer></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="#home">Ishna Zaka</a>
             </div>
-          </div>
-          <aside class="hero-status-card glass-card" aria-label="Current status">
-            <p class="status-badge">
-              <span class="status-dot"></span>
-              Open to Work
-            </p>
-            <div class="terminal-card">
-              <div class="terminal-top">
-                <span class="terminal-dot terminal-dot-red"></span>
-                <span class="terminal-dot terminal-dot-yellow"></span>
-                <span class="terminal-dot terminal-dot-green"></span>
-              </div>
-              <div class="terminal-lines">
-                <p>&gt; Open for Job ✦</p>
-                <p>&gt; Building: AI Career Platform</p>
-                <p>
-                  &gt; Location: Pakistan<span class="terminal-cursor">_</span>
-                </p>
-              </div>
+            
+            <div class="navbar-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#fyp" class="nav-link">FYP</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-          </aside>
-        </div>
-      </section>
-
-      <section id="about" class="section about">
-        <div class="container content-layer">
-          <div class="about-layout">
-            <div class="about-copy">
-              <h2 class="section-heading-accent">About Me</h2>
-              <p>
-                I'm a final-year Software Engineering student at COMSATS
-                University Islamabad, Sahiwal Campus, passionate about building
-                AI-powered products that solve real problems. My work spans
-                intelligent backends with Django &amp; FastAPI, modern animated
-                frontends with React, and machine learning pipelines using
-                spaCy, MiniLM, and computer vision models. I believe good
-                software is both smart and beautiful.
-              </p>
-            </div>
-            <aside class="glass-card about-info-card" aria-label="About details">
-              <ul>
-                <li>Degree: BSE Software Engineering</li>
-                <li>Batch: 2022–2026</li>
-                <li>COMSATS University Islamabad, Sahiwal Campus</li>
-                <li>Open to: Internships &amp; Junior Roles</li>
-                <li>
-                  GitHub:
-                  <a
-                    href="https://github.com/fa22-bse-058-droid"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >fa22-bse-058-droid</a
-                  >
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" class="section skills">
-        <div class="container content-layer">
-          <h2>What I Work With</h2>
-          <div class="skills-grid">
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="2"></circle>
-                  <ellipse cx="12" cy="12" rx="9" ry="3.8"></ellipse>
-                  <ellipse
-                    cx="12"
-                    cy="12"
-                    rx="9"
-                    ry="3.8"
-                    transform="rotate(60 12 12)"
-                  ></ellipse>
-                  <ellipse
-                    cx="12"
-                    cy="12"
-                    rx="9"
-                    ry="3.8"
-                    transform="rotate(120 12 12)"
-                  ></ellipse>
-                </svg>
-              </div>
-              <p class="skill-name">React</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M8.3 6.1c1.6-1.5 5.2-1.5 6.8 0 .9.8 1.2 2.1.8 3.3-.4 1.1-1.5 2-2.8 2.3 1.1.9 1.6 2.2 1.3 3.5-.3 1.2-1.1 2.2-2.2 2.8-1.5.8-3.7.7-5.2-.2-1.4-.8-2.1-2.2-1.8-3.7.2-1.2 1-2.2 2.4-2.7-1.2-.4-2.2-1.3-2.6-2.5-.5-1.3-.1-2.7 1-3.7z"
-                  ></path>
-                  <circle cx="9" cy="9.2" r="0.8"></circle>
-                  <circle cx="14.8" cy="14.9" r="0.8"></circle>
-                </svg>
-              </div>
-              <p class="skill-name">Python</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M10 7h2.7c2.1 0 3.9 1.7 3.9 3.8 0 2.2-1.8 3.9-3.9 3.9H10z"></path>
-                </svg>
-              </div>
-              <p class="skill-name">Django</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M13 3 6 14h5l-1 7 8-12h-5z"></path>
-                </svg>
-              </div>
-              <p class="skill-name">FastAPI</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 15c2.8-2.7 4.9-4 8-4s5.2 1.3 8 4"></path>
-                  <path d="M6 11c2.1-1.8 3.8-2.6 6-2.6 2.3 0 3.9.8 6 2.6"></path>
-                  <path d="M8 7.2c1.3-.9 2.5-1.3 4-1.3s2.7.4 4 1.3"></path>
-                </svg>
-              </div>
-              <p class="skill-name">TailwindCSS</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                  <path d="M8 9h8M10.5 9v6M13.5 9v6M8.8 15h6.4"></path>
-                </svg>
-              </div>
-              <p class="skill-name">TypeScript</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <ellipse cx="12" cy="6" rx="7" ry="3"></ellipse>
-                  <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path>
-                  <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path>
-                </svg>
-              </div>
-              <p class="skill-name">MySQL</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 9 12 4l8 5-8 5z"></path>
-                  <path d="m4 13 8 5 8-5"></path>
-                  <path d="m4 17 8 5 8-5"></path>
-                </svg>
-              </div>
-              <p class="skill-name">Redis</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="6" cy="6" r="2"></circle>
-                  <circle cx="18" cy="6" r="2"></circle>
-                  <circle cx="12" cy="18" r="2"></circle>
-                  <path d="M8 6h8M7.4 7.4l3.2 8M16.6 7.4l-3.2 8"></path>
-                </svg>
-              </div>
-              <p class="skill-name">Git</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="6" cy="7" r="2"></circle>
-                  <circle cx="18" cy="7" r="2"></circle>
-                  <circle cx="12" cy="12" r="2"></circle>
-                  <circle cx="8" cy="18" r="2"></circle>
-                  <circle cx="16" cy="18" r="2"></circle>
-                  <path d="M8 7h8M7.6 8.4 10.8 11M16.4 8.4 13.2 11M10 13.5l-1.4 2.7M14 13.5l1.4 2.7"></path>
-                </svg>
-              </div>
-              <p class="skill-name">spaCy / NLP</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
-                  <circle cx="12" cy="12" r="2.8"></circle>
-                </svg>
-              </div>
-              <p class="skill-name">CNN / CV</p>
-            </article>
-            <article class="skill-icon-card">
-              <div class="skill-icon-box">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M12 4v16M4 12h16M7 7l10 10M17 7 7 17"></path>
-                  <circle cx="12" cy="12" r="1.5"></circle>
-                </svg>
-              </div>
-              <p class="skill-name">Selenium</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="section projects">
-        <div class="container content-layer">
-          <p class="section-pill">Selected Work</p>
-          <h2>Projects</h2>
-          <p class="section-intro">
-            A selection of AI and full-stack projects built with real-world
-            impact in mind.
-          </p>
-          <div class="project-grid">
-            <article class="glass-card project-card">
-              <p class="project-number">01</p>
-              <h3>Multimodal Emotion Detection System</h3>
-              <p>
-                Detects human emotions by combining NLP text analysis and
-                computer vision facial recognition in a unified pipeline.
-              </p>
-              <div class="project-tags">
-                <span>Python</span><span>OpenCV</span><span>NLP</span
-                ><span>Deep Learning</span><span>CNN</span>
-              </div>
-            </article>
-            <article class="glass-card project-card">
-              <p class="project-number">02</p>
-              <h3>Generative AI Image Creation App</h3>
-              <p>
-                Web app that generates images from text prompts using Google's
-                Gemini API with a clean, responsive frontend.
-              </p>
-              <div class="project-tags">
-                <span>Gemini API</span><span>FastAPI</span><span>React</span
-                ><span>Python</span>
-              </div>
-            </article>
-            <article class="glass-card project-card">
-              <p class="project-number">03</p>
-              <h3>Real-Time Data Scraping &amp; Predictive Analytics Dashboard</h3>
-              <p>
-                Scrapes live data and runs regression models to forecast trends,
-                displayed on an interactive analytics dashboard.
-              </p>
-              <div class="project-tags">
-                <span>Selenium</span><span>BeautifulSoup</span
-                ><span>scikit-learn</span><span>Django</span
-                ><span>Chart.js</span>
-              </div>
-            </article>
-            <article class="glass-card project-card">
-              <p class="project-number">04</p>
-              <h3>Transformer-Based AI Chatbot</h3>
-              <p>
-                Conversational chatbot powered by GPT-2 fine-tuning with a
-                modern chat UI and context-aware response generation.
-              </p>
-              <div class="project-tags">
-                <span>GPT-2</span><span>Transformers</span
-                ><span>FastAPI</span><span>React</span>
-              </div>
-            </article>
-            <article class="glass-card project-card">
-              <p class="project-number">05</p>
-              <h3>AI-Based Smart Home Energy Optimization</h3>
-              <p>
-                ML system that analyzes household energy usage patterns and
-                recommends optimizations to reduce consumption.
-              </p>
-              <div class="project-tags">
-                <span>Python</span><span>scikit-learn</span
-                ><span>FastAPI</span><span>React</span><span>ML</span>
-              </div>
-            </article>
-            <article class="glass-card project-card">
-              <p class="project-number">06</p>
-              <h3>Assistive Smart Stick for Visually Impaired</h3>
-              <p>
-                IoT + AI embedded system that uses ultrasonic sensors and
-                computer vision to assist visually impaired individuals in
-                navigation.
-              </p>
-              <div class="project-tags">
-                <span>Python</span><span>OpenCV</span><span>IoT</span
-                ><span>Raspberry Pi</span><span>CNN</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="fyp" class="section fyp">
-        <div class="container content-layer">
-          <p class="fyp-pill">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M3 9.5L12 5L21 9.5L12 14L3 9.5Z"
-                stroke="#E8754A"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M7 11.5V15.5C7 15.5 9 18 12 18C15 18 17 15.5 17 15.5V11.5"
-                stroke="#E8754A"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M21 9.5V14.5"
-                stroke="#E8754A"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
-            </svg>
-            <span>Final Year Project</span>
-          </p>
-          <h2>AI-Powered Career Assistant Platform</h2>
-          <p class="section-intro">
-            My most comprehensive engineering project — built as a team, owned
-            as an engineer.
-          </p>
-          <div class="glass-card fyp-feature-card">
-            <div class="fyp-main">
-              <div class="fyp-left">
-                <p class="fyp-description">
-                  A full-stack AI platform that helps job seekers in Pakistan
-                  analyze their CVs, discover relevant job opportunities,
-                  auto-apply to listings, and receive personalized course
-                  recommendations — all in one intelligent system.
-                </p>
-                <div class="fyp-contributions">
-                  <h3>My Contributions</h3>
-                  <ul>
-                    <li>
-                      Frontend UI/UX — Dark cosmic-themed React app with Framer
-                      Motion animations
-                    </li>
-                    <li>
-                      CV Analyzer — PDF/DOCX parsing, spaCy NER, ATS scoring
-                      0–100
-                    </li>
-                    <li>
-                      Job Scraping &amp; Auto-Apply — Selenium scraper for
-                      Rozee.pk, LinkedIn, Indeed + AI matching
-                    </li>
-                    <li>
-                      Course Recommendations — Skill gap detection + learning
-                      path generation
-                    </li>
-                  </ul>
+            
+            <div class="navbar-right">
+                <div class="open-to-work-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Open to Work</span>
                 </div>
-                <div class="fyp-stack-preview">
-                  <span>Django</span><span>DRF</span><span>React 18</span
-                  ><span>TypeScript</span><span>TailwindCSS</span
-                  ><span>Framer Motion</span>
-                </div>
-              </div>
-              <div class="fyp-right">
-                <div class="fyp-stats-grid">
-                  <article class="glass-card stat-card">
-                    <p class="stat-title">CV Scoring</p>
-                    <p class="stat-value">0–100 ATS Score</p>
-                  </article>
-                  <article class="glass-card stat-card">
-                    <p class="stat-title">Job Sources</p>
-                    <p class="stat-value">Rozee.pk, LinkedIn, Indeed</p>
-                  </article>
-                  <article class="glass-card stat-card">
-                    <p class="stat-title">Auto-Apply</p>
-                    <p class="stat-value">AI Cover Letter + Selenium</p>
-                  </article>
-                  <article class="glass-card stat-card">
-                    <p class="stat-title">Courses</p>
-                    <p class="stat-value">Coursera, Udemy, YouTube</p>
-                  </article>
-                </div>
-                <p class="fyp-team">
-                  Team size: 3 Members | Role: Full-Stack + AI Engineer
-                </p>
-              </div>
             </div>
-            <div class="fyp-bottom">
-              <div class="fyp-stack-tags">
-                <span>Django</span><span>DRF</span><span>React 18</span
-                ><span>TypeScript</span><span>TailwindCSS</span
-                ><span>Framer Motion</span><span>MySQL</span><span>Redis</span
-                ><span>Celery</span><span>spaCy</span><span>MiniLM</span
-                ><span>Selenium</span>
-              </div>
-             <div class="fyp-bottom-actions">
-  <p class="in-progress-badge">Completed</p>
-  
-    class="btn btn-outline fyp-link"
-    href="https://github.com/fa22-bse-058-droid/Final-Year-Project--AI-Career-Assistant"
-    target="_blank"
-    rel="noopener noreferrer"
-  >View Project →</a>
-</div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-          </div>
         </div>
-      </section>
+    </nav>
 
-      <section id="contact" class="section contact">
-        <div class="container">
-          <div class="contact-intro">
-            <h2>Let's Build Something</h2>
-            <p>
-              Open to internships, junior roles, and interesting collaborations.
-              Let's talk.
-            </p>
-          </div>
-          <div class="glass-card contact-card">
-            <p class="contact-email-label">Email</p>
-            <p class="contact-email">
-              <a class="email-pill" href="mailto:ishnazaka65@gmail.com"
-                >ishnazaka65@gmail.com</a
-              >
-            </p>
-            <div class="contact-actions">
-              <a
-                href="https://github.com/fa22-bse-058-droid"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-                >GitHub</a
-              >
-              <a
-                href="https://www.linkedin.com/in/ishna-zaka-521291254/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-                >LinkedIn</a
-              >
-              <a href="mailto:ishnazaka65@gmail.com" class="btn btn-primary"
-                >Send me a message</a
-              >
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <h1 class="hero-title">Hi, I'm <span class="accent">Ishna</span></h1>
+                <p class="hero-subtitle">I build scalable AI-powered web applications with clean, animated frontends and intelligent backends. I build systems that solve real world problems.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="https://github.com/fa22-bse-058-droid" target="_blank" class="btn btn-outline">GitHub</a>
+                </div>
             </div>
-          </div>
+            
+            <div class="hero-right">
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line"><span class="prompt">&gt;</span> Open for Job</div>
+                        <div class="terminal-line"><span class="prompt">&gt;</span> Building: AI Career Platform</div>
+                        <div class="terminal-line"><span class="prompt">&gt;</span> Location: Pakistan</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-    </main>
+        
+        <!-- Floating blob background -->
+        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+    </section>
 
-    <footer class="site-footer">
-      <div class="footer-orb" aria-hidden="true"></div>
-      <div class="container footer-content">
-        <p class="footer-name">Ishna Zaka</p>
-        <div class="footer-meta">
-          <a
-            href="mailto:ishnazaka65@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >ishnazaka65@gmail.com</a
-          >
-          <a
-            href="https://www.linkedin.com/in/ishna-zaka-521291254/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer-linkedin"
-            aria-label="LinkedIn profile"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M6.9 8.7v9.2H3.8V8.7zm.2-2.8a1.8 1.8 0 1 1-3.6 0 1.8 1.8 0 0 1 3.6 0M20.4 12.6v5.3h-3.1V13c0-1.3-.5-2.2-1.7-2.2-1 0-1.5.6-1.8 1.2-.1.2-.1.5-.1.8v5H10.6V8.7h3.1V10c.4-.6 1.2-1.5 3-1.5 2.1 0 3.7 1.4 3.7 4.1"
-              ></path>
-            </svg>
-          </a>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-left">
+                    <p class="about-text">I'm a final-year Software Engineering student at COMSATS University Islamabad, Sahiwal Campus, passionate about building systems that solve real problems. My work spans intelligent backends with Django & FastAPI, modern animated frontends with React, and machine learning pipelines using spaCy, MiniLM, and computer vision models. I believe good software is both smart and beautiful.</p>
+                </div>
+                
+                <div class="about-right">
+                    <div class="info-card">
+                        <div class="info-item">
+                            <h4>Degree</h4>
+                            <p>BSE Software Engineering</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Batch</h4>
+                            <p>2022 – 2026</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>University</h4>
+                            <p>COMSATS University Islamabad, Sahiwal Campus</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Open to</h4>
+                            <p>Internships & Junior Roles</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/fa22-bse-058-droid" target="_blank">fa22-bse-058-droid</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <nav aria-label="Footer navigation">
-          <ul class="footer-nav-list">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#fyp">FYP</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <p class="footer-copyright">
-          © <span id="year"></span> Ishna Zaka. All rights reserved.
-        </p>
-      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills">
+        <div class="section-container">
+            <h2 class="section-title">What I Work With</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-react-original"></i>
+                    </div>
+                    <h3>React</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-python-plain"></i>
+                    </div>
+                    <h3>Python</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-django-plain"></i>
+                    </div>
+                    <h3>Django</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-fastapi-plain"></i>
+                    </div>
+                    <h3>FastAPI</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-tailwindcss-plain"></i>
+                    </div>
+                    <h3>TailwindCSS</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-javascript-plain"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-mysql-plain"></i>
+                    </div>
+                    <h3>MySQL</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-git-plain"></i>
+                    </div>
+                    <h3>Git</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-opencv-plain"></i>
+                    </div>
+                    <h3>spaCy/NLP</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-amazonwebservices-original"></i>
+                    </div>
+                    <h3>AWS</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-nodejs-plain"></i>
+                    </div>
+                    <h3>REST APIs</h3>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-chrome-plain"></i>
+                    </div>
+                    <h3>Selenium</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOURNEY / TIMELINE SECTION -->
+    <section id="journey" class="journey">
+        <div class="section-container">
+            <h2 class="section-title story-title">My <span class="italic-accent">story</span> so far.</h2>
+            <p class="section-subtitle">Education, projects, and the explorations that shaped how I build.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2022</div>
+                        <h3 class="timeline-title">BSSE Begins</h3>
+                        <p class="timeline-subtitle">COMSATS Sahiwal</p>
+                        <p class="timeline-description">Started Software Engineering, learned fundamentals of programming, OOP, and web development.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2023</div>
+                        <h3 class="timeline-title">First Full-Stack Projects</h3>
+                        <p class="timeline-subtitle">Academic Projects</p>
+                        <p class="timeline-description">Built School Management System, Student Registration System, and Image Gallery using Django and Python.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2024</div>
+                        <h3 class="timeline-title">AI & ML Deep Dive</h3>
+                        <p class="timeline-subtitle">Self-Learning</p>
+                        <p class="timeline-description">Self-studied FastAPI, spaCy, Transformer models, and Docker outside curriculum. Started exploring NLP and intelligent systems.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2025</div>
+                        <h3 class="timeline-title">FYP & Real-World Systems</h3>
+                        <p class="timeline-subtitle">Final Year Project</p>
+                        <p class="timeline-description">Led development of AI-Powered Career Assistant Platform — CV analysis, job scraping, AI chatbot, and resource hub. Smart Home Optimization System displayed at university Job Fair.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2026</div>
+                        <h3 class="timeline-title">Open to Work</h3>
+                        <p class="timeline-subtitle">Graduating June 2026</p>
+                        <p class="timeline-description">Actively seeking junior developer, Python backend, or AI engineering roles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+        <div class="section-container">
+            <h2 class="section-title">Recent projects & launches.</h2>
+            <p class="section-subtitle">A selection of AI and full-stack projects built with real-world impact in mind.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-number">1</div>
+                    <h3 class="project-name">AI Career Assistant Platform (FYP)</h3>
+                    <p class="project-description">Full-stack AI platform for Pakistani graduates — CV analysis, job scraping across 7 platforms, AI chatbot, and learning resource hub.</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">spaCy</span>
+                        <span class="tag">Transformers</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">2</div>
+                    <h3 class="project-name">Blood Donor Finder</h3>
+                    <p class="project-description">Emergency blood matching system — connects patients with nearby donors by blood type and city with real-time email/SMS alerts.</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">SMTP</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">3</div>
+                    <h3 class="project-name">Price Comparison Tool</h3>
+                    <p class="project-description">Scrapes Daraz and OLX in real time, displays products side by side with price, rating, and direct links.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">BeautifulSoup</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">4</div>
+                    <h3 class="project-name">Water Quality Reporter</h3>
+                    <p class="project-description">Citizens report contaminated water on a map, local authority dashboard tracks and updates resolution status publicly.</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Google Maps</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">5</div>
+                    <h3 class="project-name">Second-Hand Book Marketplace</h3>
+                    <p class="project-description">University students buy and sell used textbooks by subject/course code with photo listings and direct contact.</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">6</div>
+                    <h3 class="project-name">Smart Home Optimization System</h3>
+                    <p class="project-description">AI-powered energy management system with automated device control — displayed at university Job Fair among top student projects.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">React</span>
+                        <span class="tag">ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERMINAL CODE SHOWCASE SECTION -->
+    <section id="code-showcase" class="code-showcase">
+        <div class="section-container">
+            <h2 class="section-title showcase-title">Written with <span class="italic-accent">intent</span>.</h2>
+            <p class="section-subtitle">A peek at the code philosophy: clean, purposeful, AI-driven.</p>
+            
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">zsh — terminal</span>
+                </div>
+                <div class="terminal-body">
+                    <div id="terminal-output"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FYP SPOTLIGHT SECTION -->
+    <section id="fyp" class="fyp-spotlight">
+        <div class="section-container">
+            <div class="fyp-badge">Final Year Project</div>
+            <h2 class="section-title">AI-Powered Career Assistant Platform</h2>
+            <p class="section-subtitle">My most comprehensive engineering project — built as a team, owned as an engineer.</p>
+            
+            <div class="fyp-content">
+                <div class="fyp-left">
+                    <p class="fyp-description">This is my flagship project that combines full-stack development, machine learning, and automation. The platform helps Pakistani graduates navigate their career journey with intelligent tools.</p>
+                    
+                    <h4>My Contributions</h4>
+                    <ul class="fyp-contributions">
+                        <li>Frontend UI/UX — Dark SaaS-themed React app with Framer Motion animations</li>
+                        <li>CV Analyzer — PDF/DOCX parsing, spaCy NER, ATS scoring 0–100</li>
+                        <li>Job Scraping & Auto-Apply — Selenium scraper for Rozee.pk, LinkedIn, Indeed</li>
+                        <li>Course Recommendations — Skill gap detection + learning path generation</li>
+                    </ul>
+                </div>
+                
+                <div class="fyp-right">
+                    <div class="fyp-features">
+                        <div class="feature-card">
+                            <h4>CV Scoring</h4>
+                            <p>0–100 ATS Score</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Job Sources</h4>
+                            <p>Rozee.pk, LinkedIn, Indeed</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Auto-Apply</h4>
+                            <p>AI Cover Letter + Selenium</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Courses</h4>
+                            <p>Coursera, Udemy, YouTube</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fyp-tech-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Selenium</span>
+                        <span class="tag">spaCy</span>
+                    </div>
+                    
+                    <a href="https://github.com/fa22-bse-058-droid/Final-Year-Project--AI-Career-Assistant" target="_blank" class="btn btn-primary">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 class="section-title">Let's Build Something</h2>
+            <p class="section-subtitle">Open to internships, junior roles, and interesting collaborations. Let's talk.</p>
+            
+            <div class="contact-content">
+                <p class="contact-email">ishnazaka65@gmail.com</p>
+                
+                <div class="contact-buttons">
+                    <a href="https://github.com/fa22-bse-058-droid" target="_blank" class="btn btn-outline">GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" class="btn btn-outline">LinkedIn</a>
+                    <a href="mailto:ishnazaka65@gmail.com" class="btn btn-primary">Send me a message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Ishna Zaka · <a href="mailto:ishnazaka65@gmail.com">ishnazaka65@gmail.com</a></p>
+        </div>
     </footer>
 
-    <div class="custom-cursor" aria-hidden="true"></div>
-    <script src="./script.js"></script>
-  </body>
+    <script src="main.js"></script>
+</body>
 </html>
