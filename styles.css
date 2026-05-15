@@ -982,30 +982,22 @@ section {
   border-top: 1px solid rgba(207, 157, 123, 0.1);
   padding: 80px 0 40px;
 }
-
-.footer-cta {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
+.footer-cta { overflow: hidden; margin-bottom: 32px; }
 .footer-cta-line {
+  display: block;
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-purple), var(--accent-teal));
+  background: linear-gradient(90deg, #7C5CFA, #2DD4BF);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   color: transparent;
+  line-height: 1.2;
+  padding: 4px 0;
 }
-
-.footer-cta-line:nth-child(2) {
-  transform: translateX(18px);
-  opacity: 0.8;
-}
-
-.footer-cta-line:nth-child(3) {
-  transform: translateX(36px);
-  opacity: 0.6;
-}
+.footer-cta-line:nth-child(1) { transform: translateX(0px);  opacity: 1;    }
+.footer-cta-line:nth-child(2) { transform: translateX(18px); opacity: 0.7;  }
+.footer-cta-line:nth-child(3) { transform: translateX(36px); opacity: 0.45; }
 
 .footer-contact-row {
   display: flex;
@@ -1085,8 +1077,11 @@ section {
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-content {
-    grid-template-columns: 1fr;
-  }
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
   .skills-grid,
   .projects-grid {
