@@ -198,6 +198,27 @@ nav.scrolled {
   animation: fadeUp 0.8s ease-out 0.6s both;
 }
 
+.hero-title {
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  animation: fadeUp 0.8s ease-out;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+
+.hero-accent {
+  color: var(--accent);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}
+
+.italic-accent {
+  color: var(--accent);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}
+
 .btn {
   padding: 12px 30px;
   font-size: 1rem;
