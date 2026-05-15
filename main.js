@@ -1,108 +1,12 @@
-// ====== THREE.JS SETUP ======
+// ====== HERO PARTICLES ======
 
-function initHeroCanvas() {
+function initHeroParticles() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x0C1519, 0);
-  camera.position.z = 3;
-
-  const geometry = new THREE.IcosahedronGeometry(1.5, 4);
-  const material = new THREE.MeshPhongMaterial({
-    color: 0xCF9D7B,
-    emissive: 0x724B39,
-    shininess: 100,
-    wireframe: false
-  });
-  const icosahedron = new THREE.Mesh(geometry, material);
-  scene.add(icosahedron);
-
-  const light1 = new THREE.PointLight(0xCF9D7B, 1.5);
-  light1.position.set(5, 5, 5);
-  scene.add(light1);
-
-  const light2 = new THREE.PointLight(0x724B39, 1);
-  light2.position.set(-5, -5, 5);
-  scene.add(light2);
-
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-  scene.add(ambientLight);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    icosahedron.rotation.x += 0.005;
-    icosahedron.rotation.y += 0.008;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+  const particleSystem = new ParticleSystem(canvas);
+  particleSystem.animate();
 }
-
-function initFooterCanvas() {
-  const canvas = document.getElementById('footer-canvas');
-  if (!canvas) return;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.15), 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  
-  renderer.setSize(window.innerWidth, window.innerHeight * 0.15);
-  renderer.setClearColor(0x0C1519, 0);
-  camera.position.z = 5;
-
-  const geometries = [
-    new THREE.OctahedronGeometry(0.8, 2),
-    new THREE.TetrahedronGeometry(0.8, 1)
-  ];
-
-  const shapes = [];
-  geometries.forEach((geo, idx) => {
-    const material = new THREE.MeshPhongMaterial({
-      color: idx === 0 ? 0xCF9D7B : 0x724B39,
-      emissive: idx === 0 ? 0x724B39 : 0xCF9D7B,
-      shininess: 100
-    });
-    const mesh = new THREE.Mesh(geo, material);
-    mesh.position.x = idx === 0 ? -2 : 2;
-    shapes.push(mesh);
-    scene.add(mesh);
-  });
-
-  const light = new THREE.PointLight(0xCF9D7B, 1);
-  light.position.set(5, 5, 5);
-  scene.add(light);
-
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
-  scene.add(ambientLight);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    shapes.forEach((shape, idx) => {
-      shape.rotation.x += 0.003;
-      shape.rotation.y += 0.005;
-    });
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / (window.innerHeight * 0.15);
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight * 0.15);
-  });
-}
-
-// ====== PARTICLE SYSTEM ======
 
 class ParticleSystem {
   constructor(canvas) {
@@ -110,23 +14,35 @@ class ParticleSystem {
     this.ctx = canvas.getContext('2d');
     this.particles = [];
     this.mouse = { x: 0, y: 0 };
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
+
+    this.resizeCanvas();
     this.init();
     this.setupEventListeners();
   }
 
+  resizeCanvas() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.gradient = this.createGradient();
+  }
+
+  createGradient() {
+    const gradient = this.ctx.createLinearGradient(0, 0, this.canvas.width, this.canvas.height);
+    gradient.addColorStop(0, 'rgba(124, 92, 250, 0.6)');
+    gradient.addColorStop(1, 'rgba(45, 212, 191, 0.6)');
+    return gradient;
+  }
+
   init() {
-    for (let i = 0; i < 50; i++) {
+    this.particles = [];
+    for (let i = 0; i < 60; i++) {
       this.particles.push({
         x: Math.random() * this.canvas.width,
         y: Math.random() * this.canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 1.5,
-        opacity: Math.random() * 0.5 + 0.2
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.6 + 0.2
       });
     }
   }
@@ -138,13 +54,13 @@ class ParticleSystem {
     });
 
     window.addEventListener('resize', () => {
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
+      this.resizeCanvas();
+      this.init();
     });
   }
 
   update() {
-    this.particles.forEach((p, idx) => {
+    this.particles.forEach((p) => {
       p.x += p.vx;
       p.y += p.vy;
 
@@ -157,29 +73,28 @@ class ParticleSystem {
       const dy = this.mouse.y - p.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance < 150) {
-        p.vx += (dx / distance) * 0.3;
-        p.vy += (dy / distance) * 0.3;
+      if (distance < 140) {
+        p.vx += (dx / distance) * 0.2;
+        p.vy += (dy / distance) * 0.2;
       }
 
-      p.vx *= 0.99;
-      p.vy *= 0.99;
+      p.vx *= 0.98;
+      p.vy *= 0.98;
     });
   }
 
   draw() {
-    this.ctx.fillStyle = 'rgba(12, 21, 25, 0.1)';
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.fillStyle = 'rgba(207, 157, 123, 0.6)';
-    this.particles.forEach(p => {
+    this.ctx.fillStyle = this.gradient;
+    this.particles.forEach((p) => {
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       this.ctx.fill();
     });
 
-    this.ctx.strokeStyle = 'rgba(207, 157, 123, 0.2)';
-    this.ctx.lineWidth = 0.5;
+    this.ctx.strokeStyle = 'rgba(124, 92, 250, 0.2)';
+    this.ctx.lineWidth = 0.6;
     for (let i = 0; i < this.particles.length; i++) {
       for (let j = i + 1; j < this.particles.length; j++) {
         const p1 = this.particles[i];
@@ -188,7 +103,7 @@ class ParticleSystem {
         const dy = p1.y - p2.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 100) {
+        if (distance < 120) {
           this.ctx.beginPath();
           this.ctx.moveTo(p1.x, p1.y);
           this.ctx.lineTo(p2.x, p2.y);
@@ -205,13 +120,12 @@ class ParticleSystem {
   }
 }
 
-// ====== SCROLL DETECTION ======
+// ====== NAVBAR SCROLL ======
 
 class ScrollManager {
   constructor() {
     this.lastScrollY = 0;
-    this.isScrollingDown = false;
-    this.navbar = document.querySelector('nav');
+    this.navbar = document.querySelector('.navbar');
     this.setupScrollListener();
   }
 
@@ -219,11 +133,11 @@ class ScrollManager {
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
 
+      if (!this.navbar) return;
+
       if (currentScrollY > this.lastScrollY) {
-        this.isScrollingDown = true;
         this.navbar.classList.add('hidden');
       } else {
-        this.isScrollingDown = false;
         this.navbar.classList.remove('hidden');
       }
 
@@ -246,17 +160,9 @@ class Terminal {
     if (!this.terminalContent) return;
 
     this.messages = [
-      '$ npm run build',
-      '> Building portfolio...',
-      '✓ Compiled successfully',
-      '✓ Assets optimized',
-      '',
-      '$ npm start',
-      '> Starting development server...',
-      '✓ Server running at localhost:3000',
-      '',
-      '$ cat about.txt',
-      'Full-stack developer | Problem solver | Tech enthusiast'
+      { prompt: '>', text: 'Open for Job', status: '✓' },
+      { prompt: '>', text: 'Building: AI Career Platform', status: '✓' },
+      { prompt: '>', text: 'Location: Pakistan', status: '✓' }
     ];
 
     this.typeMessages();
@@ -268,17 +174,14 @@ class Terminal {
 
     const typeNextLine = () => {
       if (lineIndex < this.messages.length) {
-        const line = this.messages[lineIndex];
+        const message = this.messages[lineIndex];
         const lineEl = document.createElement('div');
         lineEl.className = 'terminal-line';
-
-        if (line.startsWith('$') || line.startsWith('>')) {
-          lineEl.innerHTML = `<span class="terminal-prompt">${line.charAt(0)}</span><span class="terminal-text">${line.slice(2)}</span>`;
-        } else if (line.startsWith('✓')) {
-          lineEl.innerHTML = `<span class="terminal-text" style="color: #27C93F;">${line}</span>`;
-        } else {
-          lineEl.innerHTML = `<span class="terminal-text">${line}</span>`;
-        }
+        lineEl.innerHTML = `
+          <span class="terminal-prompt">${message.prompt}</span>
+          <span class="terminal-text">${message.text}</span>
+          <span class="check">${message.status}</span>
+        `;
 
         this.terminalContent.appendChild(lineEl);
         lineIndex++;
@@ -301,21 +204,26 @@ class AnimationObserver {
   constructor() {
     this.observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeUp 0.6s ease-out forwards';
+            entry.target.classList.add('visible');
             this.observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
 
     this.observeElements();
   }
 
   observeElements() {
-    document.querySelectorAll('.timeline-item, .skill-card, .project-card, .highlight-item').forEach(el => {
+    const targets = document.querySelectorAll(
+      '.skill-card, .timeline-card, .project-card, .about-card, .terminal-card, .code-card, .fyp-feature-card, .fyp-left, .fyp-right, .contact, .footer-grid'
+    );
+
+    targets.forEach((el) => {
+      el.classList.add('reveal');
       this.observer.observe(el);
     });
   }
@@ -326,7 +234,7 @@ class AnimationObserver {
 class MobileMenu {
   constructor() {
     this.hamburger = document.querySelector('.hamburger');
-    this.navLinks = document.querySelector('.nav-links');
+    this.navMenu = document.querySelector('.nav-menu');
 
     if (this.hamburger) {
       this.hamburger.addEventListener('click', () => this.toggle());
@@ -340,12 +248,12 @@ class MobileMenu {
 
   toggle() {
     this.hamburger.classList.toggle('active');
-    this.navLinks.classList.toggle('active');
+    this.navMenu.classList.toggle('active');
   }
 
   close() {
     this.hamburger.classList.remove('active');
-    this.navLinks.classList.remove('active');
+    this.navMenu.classList.remove('active');
   }
 }
 
@@ -357,7 +265,7 @@ class SmoothScroll {
   }
 
   setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (e) => {
         const href = anchor.getAttribute('href');
         if (href !== '#') {
@@ -365,9 +273,11 @@ class SmoothScroll {
           const target = document.querySelector(href);
           if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
-            if (document.querySelector('.hamburger').classList.contains('active')) {
-              document.querySelector('.hamburger').classList.remove('active');
-              document.querySelector('.nav-links').classList.remove('active');
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && hamburger.classList.contains('active')) {
+              hamburger.classList.remove('active');
+              navMenu.classList.remove('active');
             }
           }
         }
@@ -376,140 +286,69 @@ class SmoothScroll {
   }
 }
 
-// ====== SKILL CARD HOVER ======
+// ====== SKILL MAP ======
 
-class SkillCardEffects {
-  constructor() {
-    this.setupEffects();
-  }
+function initSkillMap() {
+  const map = document.getElementById('skillMap');
+  if (!map) return;
 
-  setupEffects() {
-    document.querySelectorAll('.skill-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.animation = 'pulse 0.6s ease-out';
-      });
+  const positionOrbs = () => {
+    const orbs = Array.from(map.querySelectorAll('.skill-orb'));
+    const radius = map.offsetWidth / 2 - 48;
+    const count = orbs.length;
+
+    orbs.forEach((orb, index) => {
+      const angle = (index / count) * Math.PI * 2 - Math.PI / 2;
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+      orb.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+      orb.style.animationDelay = `${index * 0.2}s`;
     });
+  };
+
+  positionOrbs();
+  window.addEventListener('resize', positionOrbs);
+}
+
+// ====== CUSTOM CURSOR ======
+
+function initCustomCursor() {
+  const cursor = document.getElementById('customCursor');
+  if (!cursor) return;
+
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    cursor.style.display = 'none';
+    return;
   }
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+  });
+
+  document.querySelectorAll('a, button, .btn').forEach((el) => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+  });
 }
 
 // ====== INITIALIZATION ======
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHeroCanvas();
-  initFooterCanvas();
-
+  initHeroParticles();
   new ScrollManager();
   new MobileMenu();
   new SmoothScroll();
-  new SkillCardEffects();
   new AnimationObserver();
   new Terminal();
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.querySelectorAll('h1, h2, .hero-subtitle, .hero-description').forEach((el, idx) => {
-    gsap.from(el, {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      delay: idx * 0.15,
-      ease: 'power2.out'
-    });
-  });
-
-  document.querySelectorAll('.skill-card').forEach((card) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 80%'
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
-  });
-
-  document.querySelectorAll('.project-card').forEach((card) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 80%'
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
-  });
-
-  document.querySelectorAll('.timeline-item').forEach((item) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: 'top 85%'
-      },
-      opacity: 0,
-      x: -50,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
-  });
-
-  // Parallax effect
-  gsap.utils.toArray('.section-title').forEach((title) => {
-    gsap.to(title, {
-      scrollTrigger: {
-        trigger: title,
-        start: 'top center',
-        end: 'bottom center',
-        scrub: 1
-      },
-      letterSpacing: 3,
-      duration: 1
-    });
-  });
-
-  // Button hover animation
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-      gsap.to(btn, {
-        scale: 1.05,
-        duration: 0.3,
-        ease: 'back.out'
-      });
-    });
-
-    btn.addEventListener('mouseleave', () => {
-      gsap.to(btn, {
-        scale: 1,
-        duration: 0.3,
-        ease: 'back.out'
-      });
-    });
-  });
-
-  // Contact link hover
-  document.querySelectorAll('.contact-link').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      gsap.to(link, {
-        scale: 1.1,
-        duration: 0.3,
-        ease: 'back.out'
-      });
-    });
-
-    link.addEventListener('mouseleave', () => {
-      gsap.to(link, {
-        scale: 1,
-        duration: 0.3,
-        ease: 'back.out'
-      });
-    });
-  });
-});
-
-// Cleanup
-window.addEventListener('beforeunload', () => {
-  gsap.killTweensOf('*');
+  initSkillMap();
+  initCustomCursor();
 });
